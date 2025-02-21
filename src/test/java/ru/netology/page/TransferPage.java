@@ -22,11 +22,6 @@ public class TransferPage {
         titleText.shouldBe(visible);
     }
 
-    public DashboardPage makeValidTransfer(String amountToTransfer, UserInfo.CardInfo cardInfo) {
-        makeTransfer(amountToTransfer, cardInfo);
-        return new DashboardPage();
-    }
-
     public void makeTransfer(String amountToTransfer, UserInfo.CardInfo cardInfo){
         sum.setValue(amountToTransfer);
         fromCard.setValue(cardInfo.getCardNumber());
@@ -34,6 +29,6 @@ public class TransferPage {
     }
 
     public void showError(String expectedText) {
-        errorMessage.shouldHave(text(expectedText), Duration.ofSeconds(15)).shouldBe(visible);
+        errorMessage.shouldHave(text("Сумма превышает допустимый лимит!"), Duration.ofSeconds(15)).shouldBe(visible);
     }
 }
